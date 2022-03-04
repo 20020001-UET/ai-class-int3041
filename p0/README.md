@@ -15,14 +15,15 @@ There are three assignments for this project:
 
 ## Grading
 Grading process:  
-![p0](https://user-images.githubusercontent.com/79621768/156731633-3e3ec24a-af25-4ab0-a9e5-2aafdd7570b0.gif)  
-Better resolution: [mp4](https://drive.google.com/file/d/1Su2-mXLgR6AoiTwJNlQXr8caB8xSFYN9/view?usp=sharing)  
+https://user-images.githubusercontent.com/79621768/156737870-4f9cdce4-523d-4ecc-8e6a-39c3d5e7ac40.mp4
 
 ## Screenshots
 Grading progress:  
-![image](https://user-images.githubusercontent.com/79621768/156729768-21ebd28a-8419-4436-86dc-4f4f3b325daa.png)  
+![image](https://user-images.githubusercontent.com/79621768/156737544-796aa261-9dc2-458b-83f0-57d1bab3fbca.png)
 
 Final result:  
-![image](https://user-images.githubusercontent.com/79621768/156729894-505a3d02-4fc5-4c37-9137-68d10a33766c.png)  
+![image](https://user-images.githubusercontent.com/79621768/156737573-132e7bcd-30c8-4d7c-a812-5ab2c83b032f.png)
+
+
 
 Thank you for reading!
