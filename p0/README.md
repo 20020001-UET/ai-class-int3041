@@ -9,9 +9,9 @@ Original: [Project 0: Unix/Python/Autograder Tutorial](http://ai.berkeley.edu./t
 
 ## List of assignments
 There are three assignments for this project:
-- Q1: [Addition]()
-- Q2: [BuyLotsOfFruit]()
-- Q3: [ShopSmart]()
+- Q1: [Addition](https://github.com/20020001-UET/ai-class-int3041/blob/main/p0/source/addition.py)
+- Q2: [BuyLotsOfFruit](https://github.com/20020001-UET/ai-class-int3041/blob/main/p0/source/buyLotsOfFruit.py)
+- Q3: [ShopSmart](https://github.com/20020001-UET/ai-class-int3041/blob/main/p0/source/shopSmart.py)
 
 ## Grading
 Grading process:  
