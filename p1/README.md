@@ -9,9 +9,15 @@ Original: [Project 1: Search](http://ai.berkeley.edu./search.html)
 
 ## List of assignments
 There are three assignments for this project:
-- Q1: [Addition]()
-- Q2: [BuyLotsOfFruit]()
-- Q3: [ShopSmart]()
+
+- Q1: [Depth First Search]()
+- Q2: [Breadth First Search]()
+- Q3: [Uniform Cost Search]()
+- Q4: [A* Search]()
+- Q5: [Corners Problem: Representation]()
+- Q6: [Corners Problem: Heuristic]()
+- Q7: [Eating All The Dots: Heuristic]()
+- Q8: [Suboptimal Search]()
 
 ## Grading
 Grading process:  
