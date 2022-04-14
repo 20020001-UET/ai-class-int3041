@@ -428,9 +428,7 @@ class FoodSearchProblem:
         self.startingGameState = startingGameState
         self._expanded = 0 # DO NOT CHANGE
         self.heuristicInfo = {
-            "width":self.walls.width-2, 
-            "height":self.walls.height-2,
-            "foodCount":len(startingGameState.getFood().asList())
+            "walls":self.walls
         } # A dictionary for the heuristic to store information
 
     def getStartState(self):
@@ -507,44 +505,33 @@ def foodHeuristic(state, problem):
     def manhattan(pos, goal):
         return abs(pos[0] - goal[0]) + abs(pos[1] - goal[1])
 
-    def euclidean(pos, goal):
-        return ( (pos[0] - goal[0]) ** 2 + (pos[1] - goal[1]) ** 2 ) ** 0.5
+    class stateProblem:
+        def __init__(self, state, problem):
+            self.state = state
+            self.problem = problem
+
+        def getPacmanPosition(self):
+            return self.state[0]
+
+        def getWalls(self):
+            return problem.walls
 
     val = 0
-    values = []
-    count = 0
-    dis = 999999
+    foods = foodGrid.asList()
 
-    width = problem.heuristicInfo["width"]
-    height = problem.heuristicInfo["height"]
-    foodCount = problem.heuristicInfo["foodCount"]
+    for food in foods:
+        # Heuristic Method 1: -> 9928
+        #  Using manhattan distance
+        # val = max(val, manhattan(food, position))
 
-    pos = state[0]
-    food = state[1]
-    for x in range(width):
-        for y in range(height):
-            if food[x+1][y+1]:
-                val = max(val, manhattan(pos, (x+1, y+1)))
-                values.append(manhattan(pos, (x+1, y+1)))
-                dis = min(dis, manhattan(pos, (x+1, y+1)))
-                count += 1
-
-    if count == 0:
-        return 0
-
-    foodList = food.asList()
-
-    val = 0
-    while len(foodList) > 0:
-        distance = [manhattan(pos, foodPos) for foodPos in foodList]
-        min_dis = min(distance)
-        for i in range(len(foodList)):
-            if min_dis == distance[i]:
-                pos = foodList[i]
-        val += min_dis
-        foodList.remove(pos)
-
-    mean = sum(values) / len(values)
+        # Heuristic Method 2: -> 4239
+        #  Using maze distance (real distance)    
+        prob = PositionSearchProblem(stateProblem(state, problem), 
+                                    start=position, 
+                                    goal=food, 
+                                    warn=False, 
+                                    visualize=False)
+        val = max(val, len(search.bfs()))
 
     return val
 
