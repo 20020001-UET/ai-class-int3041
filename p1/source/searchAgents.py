@@ -516,24 +516,78 @@ def foodHeuristic(state, problem):
         def getWalls(self):
             return problem.walls
 
-    val = 0
-    foods = foodGrid.asList()
+    def h0():
+        """
+            Heuristic idea:
+             - Evaluate the state by choosing the fathest food.
 
-    for food in foods:
-        # Heuristic Method 1: -> 9928
-        #  Using manhattan distance
-        # val = max(val, manhattan(food, position))
+            Heuristic Method 1: -> 9928
+             - Using manhattan distance.
+            Heuristic Method 2: -> 4239
+             - Using maze distance.
 
-        # Heuristic Method 2: -> 4239
-        #  Using maze distance (real distance)    
-        prob = PositionSearchProblem(stateProblem(state, problem), 
-                                    start=position, 
-                                    goal=food, 
-                                    warn=False, 
-                                    visualize=False)
-        val = max(val, len(search.bfs()))
+        """
+        val = 0
+        foods = foodGrid.asList()
 
-    return val
+        for food in foods:
+            # Heuristic Method 1: -> 9928
+            #  Using manhattan distance
+            # val = max(val, manhattan(food, position))
+
+            # Heuristic Method 2: -> 4239
+            #  Using maze distance (real distance)    
+            prob = PositionSearchProblem(stateProblem(state, problem), 
+                                        start=position, 
+                                        goal=food, 
+                                        warn=False, 
+                                        visualize=False)
+            val = max(val, len(search.bfs(prob)))
+
+        return val
+
+    def h1():
+        """
+            Heuristic Method 3: -> 7121
+             - Get close to the nearest food (min).
+             - Using Nearest Neighbor Search algorithm to evaluate the state.
+        """
+        foods = foodGrid.asList()
+        getClose = 999999
+        for food in foods:
+            getClose = min(getClose, manhattan(position, food))
+
+        if len(foods) == 0:
+            return 0
+
+        nn = 999999
+        for food in foods:
+            currentFood = food
+            visited = []
+
+            distance = 0
+
+            while len(visited) != len(foods):
+                visited.append(currentFood)
+                minFood = currentFood
+                for nextFood in foods:
+                    if nextFood not in visited:
+                        if minFood == currentFood:
+                            minFood = nextFood
+                        if manhattan(nextFood, currentFood) < manhattan(minFood, currentFood):
+                            minFood = nextFood
+
+                if minFood == currentFood:
+                    break
+
+                distance += manhattan(minFood, currentFood)
+                currentFood = minFood
+
+            nn = min(nn, distance)
+
+        return getClose + nn
+
+    return h0()
 
 class ClosestDotSearchAgent(SearchAgent):
     "Search for all food using a sequence of searches"
